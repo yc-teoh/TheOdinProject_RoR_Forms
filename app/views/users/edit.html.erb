@@ -1,6 +1,17 @@
-<h1>New User Creation</h1>
+<h1>Edit User</h1>
 
 <div>
+  <% if @user.errors.any? %>
+    <div>
+      <p><%= pluralize(@user.errors.size, 'error') %> detected.</p>
+      <ul>
+        <% @user.errors.each do |err| %>
+          <li><%= err.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
 <!--  <form action="/users" method="post" accept-charset="UTF-8">-->
     <%= form_with model: @user do |form| %>
       <label for="username">Username:</label>
@@ -15,22 +26,7 @@
       <%= form.password_field :password, placeholder: "Your password here." %>
       <br><br>
 
-      <%= form.submit "Create" %>
+      <%= form.submit "Edit" %>
     <% end %>
 <!--  </form>-->
 </div>
-
-<!--<div>-->
-  <%#= form_tag do %>
-    <%#= label_tag(:username, "Username:") %>
-    <%#= text_field_tag(:username) %>
-<!--    <br><br>-->
-    <%#= label_tag(:email, "Email: ") %>
-    <%#= text_field_tag(:email) %>
-<!--    <br><br>-->
-    <%#= label_tag(:password, "Password: ") %>
-    <%#= password_field_tag(:password) %>
-<!--    <br><br>-->
-    <%#= submit_tag("Create") %>
-  <%# end %>
-<!--</div>-->
